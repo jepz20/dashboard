@@ -1,0 +1,52 @@
+Completion
+
+CRITERIA
+MEETS SPECIFICATIONS
+Completion
+
+App includes all requirements, including header, menu, and all dashboard views
+
+Responsiveness
+
+CRITERIA
+MEETS SPECIFICATIONS
+Responsiveness
+
+App is equally functional on mobile and desktop, using responsive design to ensure its
+displayed in a useable state.
+
+Component Design
+
+CRITERIA
+MEETS SPECIFICATIONS
+Framework Implementation
+
+Application makes use of a Front-End Framework (e.g. Backbone, Angular, Ember, et cetera) and
+properly separates data from the user interface.
+
+Data Formats
+
+CRITERIA
+MEETS SPECIFICATIONS
+Data Formats
+
+Each dashboard uses external data files (data not stored directly within the application). At
+least one file must be a comma-separated value (.csv) and at least one must be .json.
+
+Near Real-Time Updates
+
+CRITERIA
+MEETS SPECIFICATIONS
+Near Real-Time Updates
+
+Dashboard components must query the datafiles regularly, or receive “push” updates, and update
+their displays in “near” real-time without requiring a refresh of the application.
+
+App Delivery
+
+CRITERIA
+MEETS SPECIFICATIONS
+App Delivery: Build Process
+
+App includes a build process (such as Grunt or Gulp). Assets are minimized and concatenated
+as appropriate.
