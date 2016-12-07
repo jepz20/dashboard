@@ -1,0 +1,32 @@
+[
+  {
+      "store_name": "Loarque",
+      "latitud": 123,
+      "longitud": 432,
+      "address": "colonia loarque, Tegucigalpa Honduras",
+      "total_employees": 222,
+      "hired_employees_this_month": 10,
+      "fired_employees_this_month": 5,
+      "img_src": "http://www.dashboard.com/loarque.jpg"
+  },
+  {
+      "store_name": "Satelite",
+      "latitud": 127,
+      "longitud": 465,
+      "address": "colonia Satelite, Tegucigalpa Honduras",
+      "total_employees": 322,
+      "hired_employees_this_month": 12,
+      "fired_employees_this_month": 15,
+      "img_src": "http://www.dashboard.com/satelite.jpg"
+  },
+  {
+      "store_name": "Proceres",
+      "latitud": 433,
+      "longitud": 999,
+      "address": "Boluverd los proceres, Tegucigalpa Honduras",
+      "total_employees": 422,
+      "hired_employees_this_month": 1,
+      "fired_employees_this_month": 0,
+      "img_src": "http://www.dashboard.com/proceres.jpg"
+  }
+]
