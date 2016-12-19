@@ -1,22 +1,20 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 
 const mapStateToProps = (state) => ({
-  header: state.header
+  header: state.header,
 });
 
 class Header extends React.Component {
   handleTabClick() {
     console.log('click');
   }
+
   render() {
-    const goTo = () => {
-      window.open('https://github.com/jepz20', '_blank');
-    }
 
     const { header } = this.props;
     const { githubProject, title, titleIcon, tabs } = header;
@@ -24,8 +22,8 @@ class Header extends React.Component {
       white: {
         color: 'white',
         fontSize: '30px',
-      }
-    }
+      },
+    };
 
     const rightIconName = null;
     return (
@@ -58,7 +56,7 @@ class Header extends React.Component {
             </div>
         </div>
       </header>
-    )
+    );
   }
 }
 

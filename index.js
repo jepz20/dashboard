@@ -11,7 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
-import 'normalize.css'
+import 'normalize.css';
 import './node_modules/font-awesome/css/font-awesome.min.css';
 import './css/main.css';
 
@@ -22,7 +22,8 @@ render(
   <Provider store={ store }>
     <MuiThemeProvider>
       <Router onUpdate={() => window.scrollTo(0, 0)} history={ history }>
-        <Route path='/' component={ App } />
+        <Route path='/' component={ App }>
+        </Route>
       </Router>
     </MuiThemeProvider>
   </Provider>,
