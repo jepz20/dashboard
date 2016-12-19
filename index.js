@@ -11,10 +11,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
+import 'normalize.css'
+import './node_modules/font-awesome/css/font-awesome.min.css';
 import './css/main.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'material-design-icons/iconfont/material-icons.css';
-import 'bootstrap/dist/css/bootstrap-theme.min.css';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);

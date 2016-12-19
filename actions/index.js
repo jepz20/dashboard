@@ -1,3 +1,4 @@
-export const test = () => {
-  return 'hello';
-}
+export const setHeaderValues = headerDetail => ({
+  type: 'SET_HEADER_VALUES',
+  headerDetail,
+});
