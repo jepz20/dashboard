@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { hashHistory } from 'react-router';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
@@ -10,14 +11,26 @@ const mapStateToProps = (state) => ({
 });
 
 class Header extends React.Component {
-  handleTabClick() {
-    console.log('click');
+
+  constructor(props) {
+    super(props);
+    this.handleTabClick = this.handleTabClick.bind(this);
+  }
+
+  handleTabClick(tab) {
+    const { setActiveTab, header } = this.props;
+    console.log(tab.index, header.activeTab, 'handleTabClick');
+    if (tab.index !== header.activeTab) {
+      setActiveTab(tab.index);
+      hashHistory.push('/' + tab.route);
+    }
   }
 
   render() {
 
     const { header } = this.props;
-    const { githubProject, title, titleIcon, tabs } = header;
+    const { githubProject, title, titleIcon, tabs, activeTab } = header;
+    console.log(activeTab, 'HEADER');
     const styles = {
       white: {
         color: 'white',
@@ -41,12 +54,13 @@ class Header extends React.Component {
           <div className='toolbar'>
             <Tabs
               className='tabs mdl-tabs'
-              initialSelectedIndex='1'
-              >
+              value={ activeTab }
+               >
                 { tabs.map(tab =>
                   <Tab
-                    key={ tab.route }
-                    onClick   = {this.handleTabClick.bind(null, 0)}
+                    key={ tab.index }
+                    value = { tab.index }
+                    onClick   = {() => this.handleTabClick(tab)}
                     icon={<FontIcon className={tab.icon} />}
                     label={<div className='tab-label'>{tab.label}</div>}
                     >
