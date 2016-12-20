@@ -104,6 +104,7 @@ if (process.env.NODE_ENV === 'production') {
 excludedPackages = [
   'express',
   'serve-favicon',
+  'font-awesome',
 ];
 
 config.entry.vendor = config.entry.vendor.filter(e=>

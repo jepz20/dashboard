@@ -16,6 +16,7 @@ injectTapEventPlugin();
 
 import 'normalize.css';
 import './node_modules/font-awesome/css/font-awesome.min.css';
+import './node_modules/fixed-data-table/dist/fixed-data-table.css';
 import './css/main.css';
 
 const store = configureStore();

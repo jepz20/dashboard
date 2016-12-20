@@ -15,12 +15,11 @@ header {
 main {
   top: 140px;
   position: relative;
-  height: 1000px;
 }
 .dashboard {
     background-color: #eaeaea;
-    width: 100%;
     overflow: hidden;
+    width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column
