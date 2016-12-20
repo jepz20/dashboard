@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { Table, Column, Cell } from 'fixed-data-table';
+import { Table, Column, Cell } from 'fixed-data-table-2';
 import dateformat from 'dateformat';
+const Dimensions = require('react-dimensions');
+import TextField from 'material-ui/TextField';
 
 const mapStateToProps = (state) => ({
 });
@@ -12,9 +14,9 @@ let SortTypes = {
   DESC: 'DESC',
 };
 
-function reverseSortDirection(sortDir) {
-  return sortDir === SortTypes.DESC ? SortTypes.ASC : SortTypes.DESC;
-}
+const reverseSortDirection = (sortDir) => (
+  sortDir === SortTypes.DESC ? SortTypes.ASC : SortTypes.DESC
+);
 
 class DataListWrapper {
   constructor(indexMap, data) {
@@ -64,11 +66,13 @@ class SortHeaderCell extends React.Component {
   }
 }
 
-const TextCell = ({ rowIndex, data, columnKey, ...props }) => (
-  <Cell {...props}>
-    {data.getObjectAt(rowIndex)[columnKey]}
-  </Cell>
-);
+const TextCell = ({ rowIndex, data, columnKey, ...props }) => {
+  return (
+    <Cell {...props}>
+      {data.getObjectAt(rowIndex)[columnKey]}
+    </Cell>
+  );
+}
 
 const DateCell = ({ rowIndex, data, columnKey, ...props }) => {
   let timestamp = data.getObjectAt(rowIndex)[columnKey];
@@ -122,7 +126,11 @@ class Grid extends React.Component {
           timestampClosed: 1481169605,
         },
     ];
-
+    _data.push.apply(_data, _data);
+    _data.push.apply(_data, _data);
+    _data.push.apply(_data, _data);
+    _data.push.apply(_data, _data);
+    _data.push.apply(_data, _data);
     this._defaultSortIndexes = [];
     let size = _data.length;
     for (let index = 0; index < size; index++) {
@@ -131,11 +139,12 @@ class Grid extends React.Component {
 
     this._dataList = new DataListWrapper(this._defaultSortIndexes, _data);
     this.state = {
-      sortedDataList: this._dataList,
+      dataList: this._dataList,
       colSortDirs: {},
     };
 
     this._onSortChange = this._onSortChange.bind(this);
+    this._onFilterChange = this._onFilterChange.bind(this);
   }
 
   _onSortChange(columnKey, sortDir) {
@@ -159,24 +168,50 @@ class Grid extends React.Component {
       return sortVal;
     });
     this.setState({
-      sortedDataList: new DataListWrapper(sortIndexes, this._dataList._data),
+      dataList: new DataListWrapper(sortIndexes, this._dataList._data),
       colSortDirs: {
           [columnKey]: sortDir,
         },
     });
   }
 
+  _onFilterChange(e) {
+    if (!e.target.value) {
+      this.setState({
+        dataList: new DataListWrapper(this._defaultSortIndexes, this._dataList._data),
+      });
+    }
+    var filterBy = e.target.value.toLowerCase();
+        var size = this._dataList.getSize();
+        var filteredIndexes = [];
+        for (var index = 0; index < size; index++) {
+          var {customerName} = this._dataList.getObjectAt(index);
+          if (customerName.toLowerCase().indexOf(filterBy) !== -1) {
+            filteredIndexes.push(index);
+          }
+        }
+        this.setState({
+          dataList: new DataListWrapper(filteredIndexes, this._dataList._data),
+        });
+  }
+
   render() {
 
-    const { sortedDataList, colSortDirs } = this.state;
+    const { dataList, colSortDirs } = this.state;
+    const { containerHeight, containerWidth } = this.props;
     return (
       <div>
+        <TextField
+          floatingLabelText="Search"
+          onChange={this._onFilterChange}
+        /><br />
         <Table
-          rowsCount={this._dataList.getSize()}
+          rowsCount={dataList.getSize()}
           rowHeight={50}
           headerHeight={50}
-          width={400}
-          height={500}
+          touchScrollEnabled={true}
+          width={containerWidth}
+          height={600}
         >
           <Column
             columnKey="customerName"
@@ -188,7 +223,7 @@ class Grid extends React.Component {
                 Name
               </SortHeaderCell>
             }
-            cell={<TextCell data={sortedDataList} />}
+            cell={<TextCell data={dataList} />}
             width={100}
           />
           <Column
@@ -200,7 +235,7 @@ class Grid extends React.Component {
                 Email
               </SortHeaderCell>
             }
-            cell={<TextCell data={sortedDataList} />}
+            cell={<TextCell data={dataList} />}
             width={100}
           />
           <Column
@@ -212,7 +247,7 @@ class Grid extends React.Component {
                 Submission Date
               </SortHeaderCell>
             }
-            cell={<DateCell data={sortedDataList} />}
+            cell={<DateCell data={dataList} />}
             width={200}
           />
           <Column
@@ -224,7 +259,7 @@ class Grid extends React.Component {
                 description
               </SortHeaderCell>
             }
-            cell={<TextCell data={sortedDataList} />}
+            cell={<TextCell data={dataList} />}
             width={300}
           />
           <Column
@@ -236,7 +271,7 @@ class Grid extends React.Component {
                 Employee Name
               </SortHeaderCell>
             }
-            cell={<TextCell data={sortedDataList} />}
+            cell={<TextCell data={dataList} />}
             width={300}
           />
           <Column
@@ -248,7 +283,7 @@ class Grid extends React.Component {
                 status
               </SortHeaderCell>
             }
-            cell={<TextCell data={sortedDataList} />}
+            cell={<TextCell data={dataList} />}
             width={70}
           />
           <Column
@@ -260,8 +295,8 @@ class Grid extends React.Component {
                 Close Date
               </SortHeaderCell>
             }
-            cell={<TextCell data={sortedDataList} />}
-            width={150}
+            cell={<DateCell data={dataList} />}
+            width={200}
           />
         </Table>
       </div>
@@ -269,6 +304,16 @@ class Grid extends React.Component {
   }
 }
 
-Grid = connect(mapStateToProps, actions)(Grid);
+Grid = Dimensions({
+  getHeight: function (element) {
+    return window.innerHeight - 200;
+  },
 
+  getWidth: function (element) {
+    var widthOffset = window.innerWidth < 680 ? 0 : 240;
+    return window.innerWidth - widthOffset;
+  },
+})(Grid);
+
+Grid = connect(mapStateToProps, actions)(Grid);
 export default Grid;
