@@ -66,13 +66,11 @@ class SortHeaderCell extends React.Component {
   }
 }
 
-const TextCell = ({ rowIndex, data, columnKey, ...props }) => {
-  return (
+const TextCell = ({ rowIndex, data, columnKey, ...props }) => (
     <Cell {...props}>
       {data.getObjectAt(rowIndex)[columnKey]}
     </Cell>
   );
-}
 
 const DateCell = ({ rowIndex, data, columnKey, ...props }) => {
   let timestamp = data.getObjectAt(rowIndex)[columnKey];
@@ -180,19 +178,21 @@ class Grid extends React.Component {
       this.setState({
         dataList: new DataListWrapper(this._defaultSortIndexes, this._dataList._data),
       });
-    }
-    var filterBy = e.target.value.toLowerCase();
-        var size = this._dataList.getSize();
-        var filteredIndexes = [];
-        for (var index = 0; index < size; index++) {
-          var {customerName} = this._dataList.getObjectAt(index);
-          if (customerName.toLowerCase().indexOf(filterBy) !== -1) {
-            filteredIndexes.push(index);
-          }
-        }
-        this.setState({
-          dataList: new DataListWrapper(filteredIndexes, this._dataList._data),
-        });
+    };
+
+    let filterBy = e.target.value.toLowerCase();
+    let size = this._dataList.getSize();
+    let filteredIndexes = [];
+    for (let index = 0; index < size; index++) {
+      const { customerName } = this._dataList.getObjectAt(index);
+      if (customerName.toLowerCase().indexOf(filterBy) !== -1) {
+        filteredIndexes.push(index);
+      }
+    };
+
+    this.setState({
+      dataList: new DataListWrapper(filteredIndexes, this._dataList._data),
+    });
   }
 
   render() {
