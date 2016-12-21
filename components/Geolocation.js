@@ -9,7 +9,7 @@ class GeoLocation extends React.Component {
   render() {
     return (
       <div>
-        GEOLOCATION
+        <span>hello</span>
       </div>
     );
   }

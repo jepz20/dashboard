@@ -13,10 +13,12 @@ header {
 }
 
 main {
-  top: 140px;
-  position: relative;
+  display: block;
+  width: 100%
 }
 .dashboard {
+    top: 140px;
+    position: relative;
     background-color: #eaeaea;
     overflow: hidden;
     width: 100%;
