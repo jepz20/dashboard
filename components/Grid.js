@@ -7,6 +7,8 @@ const Dimensions = require('react-dimensions');
 import TextField from 'material-ui/TextField';
 
 const mapStateToProps = (state) => ({
+  grid: state.grid,
+  routing: state.routing,
 });
 
 let SortTypes = {
@@ -17,22 +19,6 @@ let SortTypes = {
 const reverseSortDirection = (sortDir) => (
   sortDir === SortTypes.DESC ? SortTypes.ASC : SortTypes.DESC
 );
-
-class DataListWrapper {
-  constructor(indexMap, data) {
-    this._indexMap = indexMap;
-    this._data = data;
-  }
-
-  getSize() {
-    return this._indexMap.length;
-  }
-
-  getObjectAt(index) {
-    let realIndex = this._indexMap[index];
-    return this._data[realIndex];
-  }
-}
 
 class SortHeaderCell extends React.Component {
   constructor(props) {
@@ -66,11 +52,13 @@ class SortHeaderCell extends React.Component {
   }
 }
 
-const TextCell = ({ rowIndex, data, columnKey, ...props }) => (
+const TextCell = ({ rowIndex, data, columnKey, ...props }) => {
+  return (
     <Cell {...props}>
       {data.getObjectAt(rowIndex)[columnKey]}
     </Cell>
   );
+};
 
 const DateCell = ({ rowIndex, data, columnKey, ...props }) => {
   let timestamp = data.getObjectAt(rowIndex)[columnKey];
@@ -85,120 +73,42 @@ const DateCell = ({ rowIndex, data, columnKey, ...props }) => {
 class Grid extends React.Component {
   constructor(props) {
     super(props);
-
-    let _data = [
-        {
-          customerName: 'Rylan Ruiz',
-          customerEmail: 'rr@np.com',
-          timestampSubmission: 1482205094,
-          description: 'Dashboard not working correctly',
-          employeeName: 'Eduardo',
-          status: 'open',
-          timestampClosed: 1471199605,
-        },
-        {
-          customerName: 'Fernando Hernandez',
-          customerEmail: 'fh@np.com',
-          timestampSubmission: 1480910405,
-          description: 'Dashboard not working correctly',
-          employeeName: 'Mario',
-          status: 'open',
-          timestampClosed: 1481119605,
-        },
-        {
-          customerName: 'Gris Ruiz',
-          customerEmail: 'gr@np.com',
-          timestampSubmission: 1480210405,
-          description: 'Dashboard not working correctly',
-          employeeName: 'Tita',
-          status: 'closed',
-          timestampClosed: 1461469605,
-        },
-        {
-          customerName: 'Hernan Fernandez',
-          customerEmail: 'HF@np.com',
-          timestampSubmission: 1460920405,
-          description: 'Dashboard not working correctly',
-          employeeName: 'Claudia',
-          status: 'closed',
-          timestampClosed: 1481169605,
-        },
-    ];
-    _data.push.apply(_data, _data);
-    _data.push.apply(_data, _data);
-    _data.push.apply(_data, _data);
-    _data.push.apply(_data, _data);
-    _data.push.apply(_data, _data);
-    this._defaultSortIndexes = [];
-    let size = _data.length;
-    for (let index = 0; index < size; index++) {
-      this._defaultSortIndexes.push(index);
-    };
-
-    this._dataList = new DataListWrapper(this._defaultSortIndexes, _data);
-    this.state = {
-      dataList: this._dataList,
-      colSortDirs: {},
-    };
-
+    this.state = {};
     this._onSortChange = this._onSortChange.bind(this);
     this._onFilterChange = this._onFilterChange.bind(this);
+    this.fetchDefaultIssues = this.fetchDefaultIssues.bind(this);
+    const { fetchIssuesDetail } = this.props;
+    fetchIssuesDetail();
+  }
+
+  componentDidMount() {
+    var intervalId = setInterval(this.fetchDefaultIssues, 1000);
+    this.setState({ intervalId: intervalId });
+  };
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
+  }
+
+  fetchDefaultIssues() {
+    const { fetchDefaultIssuesDetail } = this.props;
+    fetchDefaultIssuesDetail();
   }
 
   _onSortChange(columnKey, sortDir) {
-    let sortIndexes = this._defaultSortIndexes.slice();
-    sortIndexes.sort((indexA, indexB) => {
-      let valueA = this._dataList.getObjectAt(indexA)[columnKey];
-      let valueB = this._dataList.getObjectAt(indexB)[columnKey];
-      let sortVal = 0;
-      if (valueA > valueB) {
-        sortVal = 1;
-      };
-
-      if (valueA < valueB) {
-        sortVal = -1;
-      };
-
-      if (sortVal !== 0 && sortDir === SortTypes.ASC) {
-        sortVal = sortVal * -1;
-      };
-
-      return sortVal;
-    });
-    this.setState({
-      dataList: new DataListWrapper(sortIndexes, this._dataList._data),
-      colSortDirs: {
-          [columnKey]: sortDir,
-        },
-    });
+    const { sortChangeIssuesDetail } = this.props;
+    sortChangeIssuesDetail(columnKey, sortDir);
   }
 
   _onFilterChange(e) {
-    if (!e.target.value) {
-      this.setState({
-        dataList: new DataListWrapper(this._defaultSortIndexes, this._dataList._data),
-      });
-    };
-
-    let filterBy = e.target.value.toLowerCase();
-    let size = this._dataList.getSize();
-    let filteredIndexes = [];
-    for (let index = 0; index < size; index++) {
-      const { customerName } = this._dataList.getObjectAt(index);
-      if (customerName.toLowerCase().indexOf(filterBy) !== -1) {
-        filteredIndexes.push(index);
-      }
-    };
-
-    this.setState({
-      dataList: new DataListWrapper(filteredIndexes, this._dataList._data),
-    });
+    const { filterChangeIssuesDetail } = this.props;
+    filterChangeIssuesDetail(e.target.value,
+      ['customerName', 'customerEmail', 'description', 'employeeName', 'status']);
   }
 
   render() {
 
-    const { dataList, colSortDirs } = this.state;
-    const { containerHeight, containerWidth } = this.props;
+    const { containerHeight, containerWidth, grid } = this.props;
     return (
       <div>
         <TextField
@@ -206,12 +116,12 @@ class Grid extends React.Component {
           onChange={this._onFilterChange}
         /><br />
         <Table
-          rowsCount={dataList.getSize()}
+          rowsCount={grid.dataList.getSize()}
           rowHeight={50}
           headerHeight={50}
           touchScrollEnabled={true}
           width={containerWidth}
-          height={600}
+          height={containerHeight}
         >
           <Column
             columnKey="customerName"
@@ -219,11 +129,11 @@ class Grid extends React.Component {
             header={
               <SortHeaderCell
                 onSortChange={this._onSortChange}
-                sortDir={colSortDirs.customerName}>
+                sortDir={grid.colSortDirs.customerName}>
                 Name
               </SortHeaderCell>
             }
-            cell={<TextCell data={dataList} />}
+            cell={<TextCell data={grid.dataList} />}
             width={100}
           />
           <Column
@@ -231,23 +141,23 @@ class Grid extends React.Component {
             header={
               <SortHeaderCell
                 onSortChange={this._onSortChange}
-                sortDir={colSortDirs.customerEmail}>
+                sortDir={grid.colSortDirs.customerEmail}>
                 Email
               </SortHeaderCell>
             }
-            cell={<TextCell data={dataList} />}
-            width={100}
+            cell={<TextCell data={grid.dataList} />}
+            width={150}
           />
           <Column
             columnKey="timestampSubmission"
             header={
               <SortHeaderCell
                 onSortChange={this._onSortChange}
-                sortDir={colSortDirs.timestampSubmission}>
+                sortDir={grid.colSortDirs.timestampSubmission}>
                 Submission Date
               </SortHeaderCell>
             }
-            cell={<DateCell data={dataList} />}
+            cell={<DateCell data={grid.dataList} />}
             width={200}
           />
           <Column
@@ -255,11 +165,11 @@ class Grid extends React.Component {
             header={
               <SortHeaderCell
                 onSortChange={this._onSortChange}
-                sortDir={colSortDirs.description}>
+                sortDir={grid.colSortDirs.description}>
                 description
               </SortHeaderCell>
             }
-            cell={<TextCell data={dataList} />}
+            cell={<TextCell data={grid.dataList} />}
             width={300}
           />
           <Column
@@ -267,35 +177,35 @@ class Grid extends React.Component {
             header={
               <SortHeaderCell
                 onSortChange={this._onSortChange}
-                sortDir={colSortDirs.employeeName}>
+                sortDir={grid.colSortDirs.employeeName}>
                 Employee Name
               </SortHeaderCell>
             }
-            cell={<TextCell data={dataList} />}
-            width={300}
+            cell={<TextCell data={grid.dataList} />}
+            width={150}
           />
           <Column
             columnKey="status"
             header={
               <SortHeaderCell
                 onSortChange={this._onSortChange}
-                sortDir={colSortDirs.status}>
+                sortDir={grid.colSortDirs.status}>
                 status
               </SortHeaderCell>
             }
-            cell={<TextCell data={dataList} />}
-            width={70}
+            cell={<TextCell data={grid.dataList} />}
+            width={80}
           />
           <Column
             columnKey="timestampClosed"
             header={
               <SortHeaderCell
                 onSortChange={this._onSortChange}
-                sortDir={colSortDirs.timestampClosed}>
+                sortDir={grid.colSortDirs.timestampClosed}>
                 Close Date
               </SortHeaderCell>
             }
-            cell={<DateCell data={dataList} />}
+            cell={<DateCell data={grid.dataList} />}
             width={200}
           />
         </Table>
@@ -306,12 +216,20 @@ class Grid extends React.Component {
 
 Grid = Dimensions({
   getHeight: function (element) {
-    return window.innerHeight - 200;
+    return window.innerHeight - 100;
   },
 
   getWidth: function (element) {
-    var widthOffset = window.innerWidth < 680 ? 0 : 240;
-    return window.innerWidth - widthOffset;
+    let width = window.innerWidth;
+    if (width > 768 && width <= 991) {
+      width = 720;
+    } else if (width > 991 && width <= 1200) {
+      width = 940;
+    } else if (width > 1200) {
+      width = 1140;
+    };
+
+    return width;
   },
 })(Grid);
 

@@ -45,7 +45,7 @@ export default function(state=defaultState, action) {
       let activeTab = 0;
       if (state.tabs) {
         let match = state.tabs.filter(tab => tab.route == action.route);
-        if (match) activeTab = match[0].index;
+        if (match && match.length > 0) activeTab = match[0].index;
       };
 
       return {

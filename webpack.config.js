@@ -40,13 +40,10 @@ config = {
       root: process.cwd(),
     }),
     new CopyWebpackPlugin([
-      { from: 'data', to: 'data' },
-    ]),
-    new CopyWebpackPlugin([
       { from: 'images', to: 'images' },
     ]),
     new SWPrecacheWebpackPlugin({
-      cacheId: 'comedero',
+      cacheId: 'dashboard',
       filename: 'service-worker.js',
     }),
   ],

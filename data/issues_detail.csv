@@ -1,3 +1,153 @@
-customer_name, customer_email, timestamp_submission, description, employee name, status, timestamp_closed
-Jose, jepz20@gmail.com, 1480910405, Dashboard not working correctly, Eduardo, closed, 1481169605
-Jose, jepz20@gmail.com, 1480910405, Dashboard not working correctly again, Mario, open, 
+customerName, customerEmail, timestampSubmission, description, employeeName, status, timestampClosed
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605
+Jose, jepz20@gmail.com, 1480910405, Dashboard is not working correctly, Eduardo, closed, 1481169605
+Juan, jupz20@gmail.com, 1470910405, Dashboard may not be working correctly again, Mario, open,
+Joel, jopz20@gmail.com, 1480210405, Dashboard could not work correctly, Griscelda, closed, 1481169605
+Jaime, japz20@gmail.com, 1480710405, Dashboard would not work correctly, Claudia, closed, 1481129605

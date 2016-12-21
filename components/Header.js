@@ -19,7 +19,6 @@ class Header extends React.Component {
 
   handleTabClick(tab) {
     const { setActiveTab, header } = this.props;
-    console.log(tab.index, header.activeTab, 'handleTabClick');
     if (tab.index !== header.activeTab) {
       setActiveTab(tab.index);
       hashHistory.push('/' + tab.route);
@@ -30,7 +29,6 @@ class Header extends React.Component {
 
     const { header } = this.props;
     const { githubProject, title, titleIcon, tabs, activeTab } = header;
-    console.log(activeTab, 'HEADER');
     const styles = {
       white: {
         color: 'white',
