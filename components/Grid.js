@@ -52,17 +52,21 @@ class SortHeaderCell extends React.Component {
   }
 }
 
-const TextCell = ({ rowIndex, data, columnKey, ...props }) => {
-  return (
+const TextCell = ({ rowIndex, data, columnKey, ...props }) => (
     <Cell {...props}>
       {data.getObjectAt(rowIndex)[columnKey]}
     </Cell>
-  );
-};
+);
 
 const DateCell = ({ rowIndex, data, columnKey, ...props }) => {
   let timestamp = data.getObjectAt(rowIndex)[columnKey];
-  let formatDate = dateformat(new Date(timestamp * 1000), 'dd-mm-yyyy, hh:MMtt');
+  let formatDate;
+  if (timestamp && timestamp.length > 0) {
+    formatDate = dateformat(new Date(timestamp * 1000), 'dd-mm-yyyy, hh:MMtt');
+  } else {
+    formatDate = '';
+  };
+
   return (
     <Cell {...props}>
       { formatDate }
@@ -91,8 +95,8 @@ class Grid extends React.Component {
   }
 
   fetchDefaultIssues() {
-    const { fetchDefaultIssuesDetail } = this.props;
-    fetchDefaultIssuesDetail();
+    const { fetchIssuesDetail } = this.props;
+    fetchIssuesDetail();
   }
 
   _onSortChange(columnKey, sortDir) {
@@ -102,8 +106,7 @@ class Grid extends React.Component {
 
   _onFilterChange(e) {
     const { filterChangeIssuesDetail } = this.props;
-    filterChangeIssuesDetail(e.target.value,
-      ['customerName', 'customerEmail', 'description', 'employeeName', 'status']);
+    filterChangeIssuesDetail(e.target.value);
   }
 
   render() {

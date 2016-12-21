@@ -19,11 +19,68 @@ const defaultState = {
   dataList: new DataListWrapper([], []),
   defaultDataList: new DataListWrapper([], []),
   colSortDirs: {},
+  filterValue: '',
+  searchFields: ['customerName', 'customerEmail', 'description', 'employeeName', 'status'],
 };
 
 const SortTypes = {
   ASC: 'ASC',
   DESC: 'DESC',
+};
+
+const combineListArray = (listA, listB) => {
+  let setA = new Set(listA._indexMap);
+  let setB = new Set(listB._indexMap);
+  let array = [...setB].filter(x => setA.has(x));
+  return array;
+};
+
+const sortIssues = (columnKey, sortDir, index, dataList) => {
+  let sortIndexes = index.slice();
+  sortIndexes.sort((indexA, indexB) => {
+    let valueA = dataList.getObjectAt(indexA)[columnKey];
+    let valueB = dataList.getObjectAt(indexB)[columnKey];
+    let sortVal = 0;
+    if (valueA > valueB) {
+      sortVal = 1;
+    };
+
+    if (valueA < valueB) {
+      sortVal = -1;
+    };
+
+    if (sortVal !== 0 && sortDir === SortTypes.ASC) {
+      sortVal = sortVal * -1;
+    };
+
+    return sortVal;
+  });
+  return new DataListWrapper(sortIndexes, dataList._data);
+};
+
+const filterIssueDetails = (filterValue, dataList, searchFields) => {
+  if (!filterValue) {
+    return dataList;
+  };
+
+  let filterBy = filterValue.toLowerCase();
+  let size = dataList.getSize();
+  let filteredIndexes = [];
+  for (let index = 0; index < size; index++) {
+    searchFields.forEach(field => {
+      let fieldName = dataList.getObjectAt(index)[field];
+      if (fieldName) {
+        if (fieldName.toLowerCase().indexOf(filterBy) !== -1) {
+          if (filteredIndexes.indexOf(index) == -1) {
+            filteredIndexes.push(index);
+          }
+        }
+      }
+
+    });
+  };
+
+  return new DataListWrapper(filteredIndexes, dataList._data);;
 };
 
 export default function(state=defaultState, action) {
@@ -33,15 +90,8 @@ export default function(state=defaultState, action) {
   let size;
   let defaultIndex = [];
   let defaultDataList;
+  let filteredDataList;
   switch (action.type) {
-    case 'SET_DEFAULT_ISSUES_DETAIL':
-      size = issuesDetail.length;
-      for (let index = 0; index < size; index++) {
-        defaultIndex.push(index);
-      };
-
-      defaultDataList = new DataListWrapper(defaultIndex, issuesDetail);
-      return { ...state, defaultIndex, defaultDataList };
 
     case 'SET_ISSUES_DETAIL':
       size = issuesDetail.length;
@@ -49,70 +99,65 @@ export default function(state=defaultState, action) {
         defaultIndex.push(index);
       };
 
+      if (state.defaultDataList._data.join() == issuesDetail.join()) {
+        return state;
+      };
+
       dataList = new DataListWrapper(defaultIndex, issuesDetail);
       defaultDataList = new DataListWrapper(defaultIndex, issuesDetail);
-      return { ...state, defaultIndex, dataList, defaultDataList };
+      filteredDataList = filterIssueDetails(state.filterValue,
+        defaultDataList,
+        state.searchFields,
+      );
+      if (state.colSortDirs) {
+        let key = Object.keys(state.colSortDirs)[0];
+        let dir = state.colSortDirs[key];
+        let sortDataList = sortIssues(key,
+          dir, defaultIndex,
+          defaultDataList
+        );
+        let array = combineListArray(filteredDataList, sortDataList);
+        dataList = new DataListWrapper(array, defaultDataList._data);
+      } else {
+        dataList = filteredDataList;
+      };
 
-    case 'RESET_ISSUES_DETAIL':
-      dataList = state.defaultDataList;
-      return { ...state, dataList };
+      return { ...state, defaultIndex, dataList, defaultDataList };
 
     case 'SORT_CHANGE_ISSUES_DETAIL':
       const { columnKey, sortDir } = action;
-      let sortIndexes = state.defaultIndex.slice();
-
-      sortIndexes.sort((indexA, indexB) => {
-        let valueA = state.defaultDataList.getObjectAt(indexA)[columnKey];
-        let valueB = state.defaultDataList.getObjectAt(indexB)[columnKey];
-        let sortVal = 0;
-        if (valueA > valueB) {
-          sortVal = 1;
-        };
-
-        if (valueA < valueB) {
-          sortVal = -1;
-        };
-
-        if (sortVal !== 0 && sortDir === SortTypes.ASC) {
-          sortVal = sortVal * -1;
-        };
-
-        return sortVal;
-      });
-      dataList = new DataListWrapper(sortIndexes, state.defaultDataList._data);
       colSortDirs = {
         [columnKey]: sortDir,
       };
 
+      filteredDataList = filterIssueDetails(state.filterValue,
+        state.defaultDataList,
+        state.searchFields
+      );
+      let sortDataList = sortIssues(columnKey, sortDir, state.defaultIndex, state.defaultDataList);
+      let array = combineListArray(filteredDataList, sortDataList);
+      dataList = new DataListWrapper(array, state.defaultDataList._data);
       return {
         ...state,
         dataList,
         colSortDirs,
       };
     case 'FILTER_CHANGE_ISSUES_DETAIL':
-      const { filterValue, searchFields } = action;
-      console.log(searchFields, 'sf');
-      if (!filterValue) {
-        dataList = state.defaultDataList;
-        return { ...state, dataList };
+      const { filterValue } = action;
+      filteredDataList = filterIssueDetails(filterValue, state.defaultDataList, state.searchFields);
+      if (state.colSortDirs) {
+        let key = Object.keys(state.colSortDirs)[0];
+        let dir = state.colSortDirs[key];
+        let sortDataList = sortIssues(key,
+          dir, state.defaultIndex,
+          state.defaultDataList
+        );
+        let array = combineListArray(filteredDataList, sortDataList);
+        dataList = new DataListWrapper(array, state.defaultDataList._data);
+        return { ...state, dataList, filterValue };
       };
 
-      let filterBy = filterValue.toLowerCase();
-      size = state.defaultDataList.getSize();
-      let filteredIndexes = [];
-      for (let index = 0; index < size; index++) {
-        searchFields.forEach(field => {
-          let fieldName = state.defaultDataList.getObjectAt(index)[field];
-          if (fieldName.toLowerCase().indexOf(filterBy) !== -1) {
-            if (filteredIndexes.indexOf(index) == -1) {
-              filteredIndexes.push(index);
-            }
-          }
-        });
-      };
-
-      dataList = new DataListWrapper(filteredIndexes, state.defaultDataList._data);
-      return { ...state, dataList };
+      return { ...state, filteredDataList, filterValue };
 
     default:
       return state;

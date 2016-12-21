@@ -43,7 +43,7 @@ config = {
       { from: 'images', to: 'images' },
     ]),
     new SWPrecacheWebpackPlugin({
-      cacheId: 'dashboard',
+      cacheId: 'comedero',
       filename: 'service-worker.js',
     }),
   ],
@@ -96,6 +96,10 @@ if (process.env.NODE_ENV === 'production') {
         template: 'index_template_no_sw.ejs',
       })
     );
+  config.plugins.push(new CopyWebpackPlugin([
+      { from: 'data', to: 'data' },
+    ])
+  );
 };
 
 excludedPackages = [
