@@ -7,8 +7,12 @@ const mapStateToProps = (state) => ({
 
 class KeyMetrics extends React.Component {
   render() {
+    const style = {
+      height: '3500px',
+    };
+
     return (
-      <div>
+      <div style = { style }>
         KeyMetrics
       </div>
     );

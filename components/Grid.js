@@ -221,7 +221,11 @@ class Grid extends React.Component {
 
 Grid = Dimensions({
   getHeight: function (element) {
-    return window.innerHeight - 100;
+    if (window.innerHeight <= 500) {
+      return window.innerHeight - 72;
+    }
+
+    return window.innerHeight - 140 - 72;
   },
 
   getWidth: function (element) {

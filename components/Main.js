@@ -28,10 +28,11 @@ class MainSection extends React.Component {
   }
 
   render() {
+
     return (
-      <main>
-        { this.props.children}
-      </main>
+        <main>
+          { this.props.children}
+        </main>
     );
   }
 }
