@@ -138,6 +138,7 @@ main {
     display: inline-block
 }
 
+
 .hint:before,
 .hint:after {
     position: absolute;
@@ -297,4 +298,12 @@ main {
 }
 .hint--info.hint--top:before {
     border-top-color: #fff
+}
+
+.hint__up {
+  background-color: green;
+}
+
+.hint__down {
+  background-color: red;
 }

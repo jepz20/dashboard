@@ -1,13 +1,30 @@
 import React from 'react';
 import Divider from 'material-ui/Divider';
 
+let direction = '';
+
 class MarkerDetail extends React.Component {
+
+  componentWillUpdate(nextProps, nextState) {
+    let diff = nextProps.totalEmployees - this.props.totalEmployees;
+    if (diff == 0) {
+      direction = '';
+    };
+
+    if (diff > 0) {
+      direction = 'up';
+      console.log('verde', diff, this.props.name);
+    }
+
+    if (diff < 0) {
+      direction = 'down';
+      console.log('rojo', diff, this.props.name);
+    };
+  };
+
   render() {
     const K_SIZE = 20;
-
-    const greatPlaceStyle = {
-      // initially any map object has left top corner at lat lng coordinates
-      // it's on you to set object origin to 0,0 coordinates
+    const markerStyle = {
       position: 'absolute',
       width: K_SIZE,
       height: K_SIZE,
@@ -24,8 +41,18 @@ class MarkerDetail extends React.Component {
       cursor: 'pointer',
     };
 
-    const greatPlaceStyleHover = {
-      ...greatPlaceStyle,
+    const markerUpStyle = {
+      ...markerStyle,
+      backgroundColor: 'green',
+    };
+
+    const markerDownStyle = {
+      ...markerStyle,
+      backgroundColor: 'red',
+    };
+
+    const markerStyleHover = {
+      ...markerStyle,
       border: '3px solid rgb(255, 64, 129)',
       color: '#fff',
     };
@@ -43,10 +70,14 @@ class MarkerDetail extends React.Component {
     };
 
     const { totalEmployees, name, address, hiredMonth, firedMonth, selected } = this.props;
-    const style = selected ? greatPlaceStyleHover : greatPlaceStyle;
+    let style = selected ? markerStyleHover : markerStyle;
+    style = direction == 'up' ? markerUpStyle :
+      (direction == 'down' ? markerDownStyle : style);
     const hoverStyle = selected ? hoverSelected : hoverNotSelected;
+    const hintClasses = 'hint hint--html hint--info hint--top ' + direction;
+
     return (
-       <div className="hint hint--html hint--info hint--top" style={style}>
+       <div className={hintClasses} style={style}>
           { totalEmployees }
           <div style={hoverStyle} className="hint__content">
             <h3>{ name }</h3>

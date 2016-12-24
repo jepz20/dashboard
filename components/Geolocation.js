@@ -10,8 +10,6 @@ const mapStateToProps = (state) => ({
 
 class GeoLocation extends React.Component {
 
-  // shouldComponentUpdate = shouldPureComponentUpdate;
-
   constructor(props) {
     super(props);
     this._onChildClick = this._onChildClick.bind(this);
@@ -24,12 +22,6 @@ class GeoLocation extends React.Component {
     fetchGeolocationDetail();
   }
 
-  _onBoundsChange(center, zoom /* , bounds, marginBounds */) {
-    console.log('onBoundsChange', center, zoom);
-    // this.props.onCenterChange(center);
-    // this.props.onZoomChange(zoom);
-  }
-
   _onChildClick(key, childProps) {
     const { selectedKeyChange, centerChange } = this.props;
     centerChange([childProps.lat, childProps.lng]);
@@ -40,7 +32,7 @@ class GeoLocation extends React.Component {
     selectedKeyChange(key);
   }
 
-  _onChildMouseLeave(key, /* childProps */) {
+  _onChildMouseLeave(key) {
     const { selectedKeyChange } = this.props;
     selectedKeyChange(key);
   }
@@ -72,7 +64,6 @@ class GeoLocation extends React.Component {
     return (
       <div style={ style.mapContainer }>
         <GoogleMap
-         apiKey = {'AIzaSyAV2zQ_WJVjhj66O2fhk7FESKIR4RBOaC4'}
          defaultCenter={geolocation.defaultCenter}
          center={geolocation.center}
          onChildClick={this._onChildClick}

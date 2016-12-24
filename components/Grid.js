@@ -115,7 +115,6 @@ class Grid extends React.Component {
 
     const { containerHeight, containerWidth, grid } = this.props;
 
-
     return (
       <div>
         <TextField

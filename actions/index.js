@@ -1,5 +1,23 @@
-import { firebaseDb } from '../utils/firebase.js';
 import * as api from '../api';
+import { firebaseDb } from '../utils/firebase.js';
+
+const geolocationRef =  firebaseDb.ref('/geolocation');
+console.log(geolocationRef, 'ref');
+export const fetchGeolocationDetail = (id) => {
+  console.log('hola', 'desdeFGD');
+  return (
+    dispatch => {
+      console.log('hola', 'desdeDISPATCH');
+      geolocationRef.on('value', snapshot=> {
+        console.log(snapshot.val(), 'valor');
+        dispatch({
+          type: 'SET_GEOLOCATION_DETAIL',
+          geolocationData: snapshot.val(),
+        });
+      });
+    }
+  );
+};
 
 export const setHeaderValues = headerDetail => ({
   type: 'SET_HEADER_VALUES',
@@ -61,11 +79,3 @@ export const setGeolocationDetail = (geolocationData) => ({
 export const fetchIssuesDetail = () =>
   api.fetchIssuesDetail()
   .then(response => setIssuesDetail(response));
-
-export const fetchGeolocationDetail = () =>
-  api.fetchGeolocationDetail()
-  .then(geolocationData => setGeolocationDetail(geolocationData));
-
-export const fetchDefaultIssuesDetail = () =>
-  api.fetchIssuesDetail()
-  .then(response => setDefaultIssuesDetail(response));

@@ -36,9 +36,3 @@ export const fetchIssuesDetail = () => (
     });
   }).then(result => result)
 );
-
-export const fetchGeolocationDetail = () => (
-  fetch(`http://${host}/api/geolocation`)
-  .then(response => response.json())
-  .then(geolocationData => geolocationData)
-);
