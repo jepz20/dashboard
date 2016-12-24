@@ -105,6 +105,7 @@ if (process.env.NODE_ENV === 'production') {
 excludedPackages = [
   'express',
   'serve-favicon',
+  'body-parser',
   'font-awesome',
 ];
 

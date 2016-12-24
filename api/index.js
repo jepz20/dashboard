@@ -1,6 +1,9 @@
-export const fetchIssuesDetail = () => {
-  let host = window.location.host;
-  return fetch(`http://${host}/data/issues_detail.csv`).then(response => {
+// TODO remove this hard coded host
+// const host = window.location.host;
+const host = 'localhost:2205';
+
+export const fetchIssuesDetail = () => (
+  fetch(`http://${host}/data/issues_detail.csv`).then(response => {
     let reader = response.body.getReader();
     let completeText = '';
     let decoder = new TextDecoder();
@@ -31,5 +34,11 @@ export const fetchIssuesDetail = () => {
 
       return arr;
     });
-  }).then(result => result);
-};
+  }).then(result => result)
+);
+
+export const fetchGeolocationDetail = () => (
+  fetch(`http://${host}/api/geolocation`)
+  .then(response => response.json())
+  .then(geolocationData => geolocationData)
+);

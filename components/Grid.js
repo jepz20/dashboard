@@ -16,6 +16,8 @@ let SortTypes = {
   DESC: 'DESC',
 };
 
+const FETCH_TIMEOUT = 1000;
+
 const reverseSortDirection = (sortDir) => (
   sortDir === SortTypes.DESC ? SortTypes.ASC : SortTypes.DESC
 );
@@ -86,7 +88,7 @@ class Grid extends React.Component {
   }
 
   componentDidMount() {
-    var intervalId = setInterval(this.fetchDefaultIssues, 1000);
+    var intervalId = setInterval(this.fetchDefaultIssues, FETCH_TIMEOUT);
     this.setState({ intervalId: intervalId });
   };
 

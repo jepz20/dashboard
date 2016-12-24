@@ -1,3 +1,4 @@
+import { firebaseDb } from '../utils/firebase.js';
 import * as api from '../api';
 
 export const setHeaderValues = headerDetail => ({
@@ -37,9 +38,33 @@ export const filterChangeIssuesDetail = (filterValue, searchFields) => ({
   searchFields,
 });
 
+export const updateEmployees = (key) => ({
+  type: 'UPDATE_EMPLOYEES',
+  key,
+});
+
+export const centerChange = (center) => ({
+  type: 'CENTER_CHANGE',
+  center,
+});
+
+export const selectedKeyChange = (key) => ({
+  type: 'SELECTED_KEY_CHANGE',
+  key,
+});
+
+export const setGeolocationDetail = (geolocationData) => ({
+  type: 'SET_GEOLOCATION_DETAIL',
+  geolocationData,
+});
+
 export const fetchIssuesDetail = () =>
   api.fetchIssuesDetail()
   .then(response => setIssuesDetail(response));
+
+export const fetchGeolocationDetail = () =>
+  api.fetchGeolocationDetail()
+  .then(geolocationData => setGeolocationDetail(geolocationData));
 
 export const fetchDefaultIssuesDetail = () =>
   api.fetchIssuesDetail()
