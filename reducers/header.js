@@ -6,17 +6,17 @@ const defaultState = {
   tabs: [
     {
       label: 'Grid',
-      icon: 'fa fa-bolt',
+      icon: 'fa fa-table',
       index: 0,
       route: 'grid',
     }, {
       label: 'GeoLocation',
-      icon: 'fa fa-superpowers',
+      icon: 'fa fa-map-marker',
       index: 1,
       route: 'geolocation',
     }, {
-      label: 'Key Metric',
-      icon: 'fa fa-ravelry',
+      label: 'Key Metrics',
+      icon: 'fa fa-key',
       index: 2,
       route: 'keymetrics',
     },

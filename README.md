@@ -11,7 +11,7 @@ Dashboard is serve using a simple express server, and uses React and redux as fr
 Dashboard is a progressive, mobile first app, which can serve the content offline, and connects to firebase for live data updates.
 
 ##Live Version
-Live version of the page: https://comedero-jepz.herokuapp.com
+Live version of the app: https://dashboard-j.herokuapp.com/
 
 
 ##Installation
