@@ -1,6 +1,5 @@
 // TODO remove this hard coded host
-// const host = window.location.host;
-const host = 'localhost:2205';
+const host = window.location.host;
 
 export const fetchIssuesDetail = () => (
   fetch(`http://${host}/data/issues_detail.csv`).then(response => {

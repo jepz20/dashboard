@@ -5,6 +5,8 @@ import { Table, Column, Cell } from 'fixed-data-table-2';
 import dateformat from 'dateformat';
 const Dimensions = require('react-dimensions');
 import TextField from 'material-ui/TextField';
+import { loaderStyle } from '../styles/loader';
+import { ThreeBounce } from 'better-react-spinkit';
 
 const mapStateToProps = (state) => ({
   grid: state.grid,
@@ -97,8 +99,11 @@ class Grid extends React.Component {
   }
 
   fetchDefaultIssues() {
-    const { fetchIssuesDetail } = this.props;
-    fetchIssuesDetail();
+    const { fetchIssuesDetail, changeGridLoadingState } = this.props;
+    if (!this.props.grid.loading) {
+      changeGridLoadingState();
+      fetchIssuesDetail();
+    }
   }
 
   _onSortChange(columnKey, sortDir) {
@@ -114,6 +119,9 @@ class Grid extends React.Component {
   render() {
 
     const { containerHeight, containerWidth, grid } = this.props;
+    if (grid.firstLoad) {
+      return <div style={ loaderStyle }><ThreeBounce size={15} color='#ff4081'/></div>;
+    };
 
     return (
       <div>

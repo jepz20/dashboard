@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var path = require('path');
 var host = process.env.HOST || '0.0.0.0';
-var port = process.env.PORT || 2205;
+var port = process.env.PORT || 2204;
 var root = path.resolve(__dirname);
 
 app = express();

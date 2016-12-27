@@ -14,20 +14,6 @@ class DataListWrapper {
   }
 }
 
-const defaultState = {
-  defaultIndex: [],
-  dataList: new DataListWrapper([], []),
-  defaultDataList: new DataListWrapper([], []),
-  colSortDirs: {},
-  filterValue: '',
-  searchFields: ['customerName', 'customerEmail', 'description', 'employeeName', 'status'],
-};
-
-const SortTypes = {
-  ASC: 'ASC',
-  DESC: 'DESC',
-};
-
 const combineListArray = (listA, listB) => {
   let setA = new Set(listA._indexMap);
   let setB = new Set(listB._indexMap);
@@ -83,6 +69,22 @@ const filterIssueDetails = (filterValue, dataList, searchFields) => {
   return new DataListWrapper(filteredIndexes, dataList._data);;
 };
 
+const defaultState = {
+  loading: true,
+  firstLoad: true,
+  defaultIndex: [],
+  dataList: new DataListWrapper([], []),
+  defaultDataList: new DataListWrapper([], []),
+  colSortDirs: {},
+  filterValue: '',
+  searchFields: ['customerName', 'customerEmail', 'description', 'employeeName', 'status'],
+};
+
+const SortTypes = {
+  ASC: 'ASC',
+  DESC: 'DESC',
+};
+
 export default function(state=defaultState, action) {
   const { issuesDetail } = action;
   let dataList;
@@ -100,7 +102,7 @@ export default function(state=defaultState, action) {
       };
 
       if (state.defaultDataList._data.join() == issuesDetail.join()) {
-        return state;
+        return { ...state, loading: false };
       };
 
       dataList = new DataListWrapper(defaultIndex, issuesDetail);
@@ -122,7 +124,12 @@ export default function(state=defaultState, action) {
         dataList = filteredDataList;
       };
 
-      return { ...state, defaultIndex, dataList, defaultDataList };
+      return { ...state, defaultIndex,
+        dataList,
+        defaultDataList,
+        loading: false,
+        firstLoad: false,
+      };
 
     case 'SORT_CHANGE_ISSUES_DETAIL':
       const { columnKey, sortDir } = action;
@@ -158,7 +165,8 @@ export default function(state=defaultState, action) {
       };
 
       return { ...state, filteredDataList, filterValue };
-
+    case 'CHANGE_GRID_LOADING_STATE':
+      return { ...state, loading: true };
     default:
       return state;
   }

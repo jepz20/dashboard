@@ -1,18 +1,29 @@
 import * as api from '../api';
 import { firebaseDb } from '../utils/firebase.js';
 
-const geolocationRef =  firebaseDb.ref('/geolocation');
-console.log(geolocationRef, 'ref');
 export const fetchGeolocationDetail = (id) => {
-  console.log('hola', 'desdeFGD');
+  const geolocationRef =  firebaseDb.ref('/geolocation');
   return (
     dispatch => {
-      console.log('hola', 'desdeDISPATCH');
       geolocationRef.on('value', snapshot=> {
-        console.log(snapshot.val(), 'valor');
         dispatch({
           type: 'SET_GEOLOCATION_DETAIL',
           geolocationData: snapshot.val(),
+        });
+      });
+    }
+  );
+};
+
+export const fetchKeyMetric = (keyMetricType) => {
+  const keyMetricRef =  firebaseDb.ref(`/keymetrics/${keyMetricType}`);
+  return (
+    dispatch => {
+      keyMetricRef.on('value', snapshot=> {
+        dispatch({
+          type: 'SET_KEY_METRICS_DATA',
+          data: snapshot.val(),
+          keyMetricType,
         });
       });
     }
@@ -71,9 +82,8 @@ export const selectedKeyChange = (key) => ({
   key,
 });
 
-export const setGeolocationDetail = (geolocationData) => ({
-  type: 'SET_GEOLOCATION_DETAIL',
-  geolocationData,
+export const changeGridLoadingState = () => ({
+  type: 'CHANGE_GRID_LOADING_STATE',
 });
 
 export const fetchIssuesDetail = () =>

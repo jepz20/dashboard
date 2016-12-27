@@ -39,14 +39,6 @@ class GeoLocation extends React.Component {
 
   render() {
 
-    const style = {
-      mapContainer: {
-        position: 'absolute',
-        height: 'calc(100% - 140px)',
-        width: '100%',
-      },
-    };
-
     const { geolocation } = this.props;
     const markers = Object.keys(geolocation.markers).map(key => (
       <MarkerDetail key={ key }
@@ -62,7 +54,7 @@ class GeoLocation extends React.Component {
     ));
 
     return (
-      <div style={ style.mapContainer }>
+      <div className="map-container">
         <GoogleMap
          defaultCenter={geolocation.defaultCenter}
          center={geolocation.center}

@@ -17,7 +17,6 @@ main {
   margin-top: 140px;
 }
 .dashboard {
-    background-color: #eaeaea;
     overflow: hidden;
     width: 100%;
     height: 100%;
@@ -88,6 +87,50 @@ main {
   align-items: center
 }
 
+.map-container {
+  position: absolute;
+  height: calc(100% - 140px);
+  width: 100%;
+
+}
+
+.keymetrics__title {
+  color: #757575;
+  padding-left: 16px;
+  font-size: 20px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.keymetrics__issues--value {
+  font-size: 60px;
+  text-align: center;
+  color: #00bcd4
+}
+
+.keymetrics {
+  display: flex;
+  flex-direction: column;
+}
+
+.keymetrics__upper {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.keymetrics__upper__left {
+  width: 100%;
+}
+
+.keymetrics__upper__right {
+  width: 100%;
+}
+
+.keymetrics__lower {
+  width: 100%;
+}
+
 @media only screen and (max-height: 500px) {
 
   header {
@@ -96,6 +139,12 @@ main {
 
   main {
     margin-top: 0;
+  }
+
+  .map-container : {
+    position: absolute;
+    height: 100%;
+    width: 100%;
   }
 
 }
@@ -109,24 +158,32 @@ main {
 }
 
 @media only screen and (min-width: 768px) {
-  main, .toolbar, .AppBar {
+  main, .toolbar, .AppBa, .map-container {
     margin-left: auto;
     margin-right: auto;
     width: 720px;
   }
+
 }
 
 @media only screen and (min-width: 991px) {
-  main, .toolbar, .AppBar {
+  main, .toolbar, .AppBar, .map-container {
     margin-left: auto;
     margin-right: auto;
     width: 940px;
   }
 
+  .keymetrics__upper__left {
+    width: 50%;
+  }
+
+  .keymetrics__upper__right {
+    width: 50%;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
-  main, .toolbar, .AppBar {
+  main, .toolbar, .AppBar, .map-container {
     margin-left: auto;
     margin-right: auto;
     width: 1140px;

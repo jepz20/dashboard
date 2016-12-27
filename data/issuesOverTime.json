@@ -1,0 +1,8 @@
+{
+  "labels": ["January", "February", "March", "April", "May", "June", "July"],
+  "datasets": [
+      {
+          "data": [10, 15, 1, 30, 20, 21, 17]
+      }
+  ]
+}

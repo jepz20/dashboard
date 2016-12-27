@@ -13,12 +13,10 @@ class MarkerDetail extends React.Component {
 
     if (diff > 0) {
       direction = 'up';
-      console.log('verde', diff, this.props.name);
     }
 
     if (diff < 0) {
       direction = 'down';
-      console.log('rojo', diff, this.props.name);
     };
   };
 

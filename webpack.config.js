@@ -43,8 +43,14 @@ config = {
       { from: 'images', to: 'images' },
     ]),
     new SWPrecacheWebpackPlugin({
-      cacheId: 'comedero',
+      cacheId: 'dashboard',
       filename: 'service-worker.js',
+      runtimeCaching: [
+        {
+          urlPattern: /[.]csv$/,
+          handler: 'networkFirst',
+        },
+      ],
     }),
   ],
   module: {

@@ -10,7 +10,6 @@ export default function(state=defaultState, action) {
   let markers =  { ...state.markers };
   switch (action.type) {
     case 'SET_GEOLOCATION_DETAIL':
-      console.log(geolocationData, 'georeducer');
       return geolocationData;
     case 'UPDATE_EMPLOYEES':
       markers[key].totalEmployees++;
