@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   routing: state.routing,
 });
 
+const API_KEY = 'AIzaSyCTCKi7arfd9BrRlCvZBVmnjPn9NoyHg_8';
 class GeoLocation extends React.Component {
 
   constructor(props) {
@@ -56,7 +57,10 @@ class GeoLocation extends React.Component {
     return (
       <div className="map-container">
         <GoogleMap
-         defaultCenter={geolocation.defaultCenter}
+        bootstrapURLKeys={{
+            key: API_KEY,
+            language: 'en',
+          }}
          center={geolocation.center}
          onChildClick={this._onChildClick}
          onChildMouseEnter={this._onChildMouseEnter}

@@ -1,8 +1,8 @@
 // TODO remove this hard coded host
-const host = window.location.host;
+const origin = window.location.origin;
 
 export const fetchIssuesDetail = () => (
-  fetch(`http://${host}/data/issues_detail.csv`).then(response => {
+  fetch(`${origin}/data/issues_detail.csv`).then(response => {
     let reader = response.body.getReader();
     let completeText = '';
     let decoder = new TextDecoder();
