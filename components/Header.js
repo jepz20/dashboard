@@ -28,7 +28,7 @@ class Header extends React.Component {
   render() {
 
     const { header } = this.props;
-    const { githubProject, title, titleIcon, tabs, activeTab } = header;
+    const { githubLink, title, titleIcon, tabs, activeTab } = header;
     const styles = {
       white: {
         color: 'white',
@@ -44,7 +44,7 @@ class Header extends React.Component {
             <IconButton iconStyle={styles.white} iconClassName={ titleIcon }/>
             <h1 className='AppBar__title'>{ title }</h1>
           </a>
-          <a className='AppBar__right' href={githubProject}>
+          <a className='AppBar__right' href={githubLink}>
             <IconButton iconStyle={styles.white} iconClassName='fa fa-github'/>
           </a>
         </div>
